@@ -26,6 +26,7 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.dimension.DimensionType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +91,7 @@ public abstract class AbstractSkybox {
         this.fogColors = properties.getFogColors();
         this.shouldRotate = properties.isShouldRotate();
         this.weather = conditions.getWeathers().stream().map(Weather::toString).distinct().collect(Collectors.toList());
-        this.biomes = conditions.getBiomes();
+//      this.biomes = conditions.getBiomes();
         this.worlds = conditions.getWorlds();
         this.heightRanges = conditions.getHeights();
         this.decorations = decorations;
@@ -132,7 +133,7 @@ public abstract class AbstractSkybox {
                     maxPossibleAlpha = 0f;
             }
             maxPossibleAlpha *= maxAlpha;
-            if (checkBiomes() && checkHeights() && checkWeather()) { // check if environment is invalid
+            if (checkDim() && checkHeights() && checkWeather()) { // check if environment is invalid
                 if (alpha >= maxPossibleAlpha) {
                     alpha = maxPossibleAlpha;
                 } else {
@@ -164,7 +165,9 @@ public abstract class AbstractSkybox {
     /**
      * @return Whether the current biomes and dimensions are valid for this skybox.
      */
-    protected boolean checkBiomes() {
+    
+    /*
+    protected boolean checkBiome() {
         MinecraftClient client = MinecraftClient.getInstance();
         Objects.requireNonNull(client.world);
         if (worlds.isEmpty()|| worlds.contains(client.world.getRegistryKey().getValue())) {
@@ -172,7 +175,21 @@ public abstract class AbstractSkybox {
         }
         return false;
     }
-
+	*/
+    
+    protected boolean checkDim() {
+    	MinecraftClient client = MinecraftClient.getInstance();
+    	if (client.world.getDimension().hasFixedTime()) {
+            return false;
+        }
+    	return true;
+    }
+    
+    protected boolean checkBiomes() {
+    	return true;
+    }
+    
+    
     /**
      * @return Whether the current heights are valid for this skybox.
      */

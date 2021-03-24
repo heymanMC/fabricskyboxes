@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.5-SNAPSHOT'
+    id 'fabric-loom' version '0.6-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -27,7 +27,7 @@ repositories {
 dependencies {
     //to change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // fabric api resource loader
@@ -37,13 +37,12 @@ dependencies {
     compileOnly "com.google.code.findbugs:jsr305:3.0.2"
 
     // Databreaker/optimization mods
-    modRuntime "com.github.jellysquid3:sodium:1.16.x~stable-SNAPSHOT"
-    modRuntime "com.github.jellysquid3:lithium-fabric:mc1.16.3-0.5.6"
-    modRuntime "com.github.jellysquid3:phosphor-fabric:1.16.x~dev-SNAPSHOT"
-    modRuntime ("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
-        exclude module: "fabric-loader"
-    }
-
+  	//modRuntime "com.github.jellysquid3:sodium:1.16.x~stable-SNAPSHOT"
+  // 	modRuntime "com.github.jellysquid3:lithium-fabric:mc1.16.1-0.5.1"
+ // 	modRuntime "com.github.jellysquid3:phosphor-fabric:1.16.x~dev-SNAPSHOT"
+  //  modRuntime ("com.github.SuperCoder7979:databreaker:${databreaker_version}") {
+   //     exclude module: "fabric-loader"
+   // }
     testmodImplementation sourceSets.main.output
 }
 
