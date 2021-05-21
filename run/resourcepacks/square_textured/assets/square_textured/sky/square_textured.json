@@ -4,7 +4,19 @@
   "decorations": {
     "showStars": false,
     "sun": "minecraft:textures/atlas/blocks.png",
-    "moon": "minecraft:textures/atlas/particles.png"
+    "moon": "minecraft:textures/atlas/particles.png",
+    "rotation": {
+      "static": [
+        100,
+        0.5,
+        0.5
+      ],
+      "axis": [
+        1,
+        0,
+        1
+      ]
+    }
   },
   "blend": {
     "type": "add"
@@ -18,12 +30,13 @@
     "east": "minecraft:textures/atlas/blocks.png"
   },
   "properties": {
-    "changeFog": true,
+    "changeFog": false,
+    "skySunTint": true,
     "shouldRotate": true,
     "rotation": {
       "static": [
         0.1,
-        0.0,
+        0.5,
         0.1
       ],
       "axis": [
@@ -36,8 +49,7 @@
       "startFadeIn": 1000,
       "endFadeIn": 2000,
       "startFadeOut": 11000,
-      "endFadeOut": 12000,
-      "alwaysOn": true
+      "endFadeOut": 13000
     },
     "maxAlpha": 0.99,
     "transitionSpeed": 0.7
